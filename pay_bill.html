@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Payment</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .footer {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar {
+            height: 70px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="/Style/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            e-Bill
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/User Home page.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/New Connection Application.html">New Connection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/pay_bill.html">Pay Bill</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/payment_history.html">History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/complaint.html">Complaint</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Bill Payment</h2>
+        <form action="/call_razorpay_api" method="post">
+            <fieldset>
+                <legend>Payment Details</legend>
+
+                <div class="form-group">
+                    <label for="select-account" class="form-label">Select Account:</label>
+                    <select id="select-account" name="select_account" class="form-control" required>
+                        <option value="" disabled selected>Select your account</option>
+                        <option value="account-1">Account 1</option>
+                        <option value="account-2">Account 2</option>
+                        <option value="account-3">Account 3</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Payment Amount:</label>
+                    <div class="form-check">
+                        <input type="radio" id="full-amount" name="payment_amount" value="full" class="form-check-input" checked>
+                        <label for="full-amount" class="form-check-label">Full Amount</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="partial-amount" name="payment_amount" value="partial" class="form-check-input">
+                        <label for="partial-amount" class="form-check-label">Partial Amount</label>
+                    </div>
+                    <div id="partial-amount-input" style="display:none;" class="mt-2">
+                        <label for="amount" class="form-label">Enter Amount to Pay:</label>
+                        <input type="number" id="amount" name="amount" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="payment-method" class="form-label">Payment Method:</label>
+                    <select id="payment-method" name="payment_method" class="form-control" required>
+                        <option value="" disabled selected>Select payment method</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="debit-card">Debit Card</option>
+                        <option value="bank-transfer">Bank Transfer</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Pay Now</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="footer mt-5">
+        <p>&copy; 2024 E-Bill. All rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input[name="payment_amount"]').change(function () {
+                if ($(this).val() == "partial") {
+                    $('#partial-amount-input').show();
+                } else {
+                    $('#partial-amount-input').hide();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

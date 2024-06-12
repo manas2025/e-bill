@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File a Complaint</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* Limiting container width for better readability */
+            margin: 0 auto; /* Centering the container horizontally */
+            margin-top: 50px; /* Adjusting top margin for spacing */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 5px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .footer {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar {
+            height: 70px;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            margin-top: 5px;
+        }
+
+        input[type="file"] {
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="/Style/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            e-Bill
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/User Home page.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/New Connection Application.html">New Connection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pay_bill.html">Pay Bill</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/payment_history.html">History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/complaint.html">Complaint</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>File a Complaint</h2>
+        <form action="/complaint" method="post">
+            <div class="form-group">
+                <label for="complaint-type" class="form-label">Complaint Type:</label>
+                <select id="complaint-type" name="complaint_type" class="form-control">
+                    <option value="billing">Billing Issue</option>
+                    <option value="service">Service Disruption</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="complaint-details" class="form-label">Complaint Details:</label>
+                <textarea id="complaint-details" name="complaint_details" rows="4" class="form-control"
+                    required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="meter-photo" class="form-label">Upload Meter Reading Photo:</label>
+                <input type="file" id="meter-photo" name="meter_photo" class="form-control meter">
+            </div>
+            <div>
+                <input type="submit" value="Submit Complaint">
+            </div>
+        </form>
+    </div>
+
+    <div class="footer mt-5">
+        <p>&copy; 2024 E-Bill. All rights reserved.</p>
+    </div>
+</body>
+
+</html>
